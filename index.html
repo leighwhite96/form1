@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Sign up!</title>
+     <style>
+       form {
+         width: 25vw;
+         padding: 20px;
+       }
+     </style>
+   </head>
+    <body>
+       <form action="/signup" method="POST">
+         <h1>Sign up to our website</h1><br />
+         <h3>Title:</h3>
+         <div class="title-check">
+         <label class="title-check-input">
+           <input class="title-check-input" type="radio" name="title" id="Mrs" value="Mrs">
+           Mrs
+         </label>
+       </div>
+       <div class="title-check">
+         <label class=""title-check-input">
+           <input class=""title-check-input" type="radio" name="title" id="Mr" value="Mr">
+           Mr
+         </label>
+       </div>
+       <div class="title-check">
+         <label class=""title-check-input">
+           <input class=""title-check-input" type="radio" name="title" id="Miss" value="Miss">
+           Miss
+         </label>
+       </div>
+       <br />
+       <div class="form-group">
+           <label for="InputEmail1">Email address</label>
+           <input type="email" name="email" class="form-control" id="InputEmail1" placeholder="Enter email">
+         </div>
+     <div class="form-group">
+       <label for="InputPassword1">Password</label>
+       <input type="password" name="password" class="form-control" id="InputPassword1" placeholder="Password">
+     </div>
+     <div class="container">
+     <h3>Country:</h3>
+       <div class="dropdown">
+         <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown">Country
+         <span class="caret"></span></button>
+         <ul class="dropdown-menu">
+           <li name: ><a name: href="#"> United Kingdom </a></li>
+           <li name: ><a name: href="#"> United States of America </a></li>
+           <li name: ><a name: href="#"> Germany </a></li>
+         </ul>
+       </div>
+     </div>
+     <br />
+     <div class="tandc-check">
+       <label class="tandc-check-label">
+         <input type="checkbox" class="tandc-check-input">
+         I agree to the Terms and Conditions
+       </label>
+     </div>
+     <button type="submit" id="btn" class="btn btn-primary">Submit</button>
+   </form>
+   <img class="gif">
+
+   </img>
+   <script>
+   document.querySelector("#btn").addEventListener("submit",function(event){
+     event.preventDefault();
+
+   });
+   (function () {
+      var xhr = new XMLHttpRequest();
+      var url = "http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC";
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            var giphyObj = JSON.parse(xhr.responseText);
+
+            var gifDrop = document.querySelector(".gif");
+            var link = giphyObj.data[1].images.downsized_medium.url;
+            gifDrop.src = link;
+          }
+      };
+      xhr.open("GET", url, true);
+      xhr.send();
+    })();
+    </script>
+
+
+
+
+
+</html>
